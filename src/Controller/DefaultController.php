@@ -128,14 +128,6 @@ class DefaultController extends AbstractController
 
             $conversionProcess->wait();
 
-            echo "<h1>CLEANUP TMP FOLDER</h1>";
-            $rmProcess = new Process([
-                'rm',
-                '-rf',
-                $tmpDir.'*'
-            ]);
-            $rmProcess->run();
-            $rmProcess->wait();
             return $this->redirectToRoute('app_default_mosh', ['filePath' => $finalPath]);
         }
         return $this->render(
